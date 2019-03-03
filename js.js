@@ -536,6 +536,8 @@ function init(appId)
     {
         app.queuedInit = runInit;
     }
+
+    return appId;
 }
 
 function dataColor()
@@ -893,7 +895,11 @@ init();
 
 document.getElementById('app-generate').onclick = function()
 {
-    init();
+    var appId = init(),
+        idEl  = document.getElementById('id');
+
+    idEl.placeholder = appId;
+    idEl.value       = '';
 }
 
 $(document).on('change', '.app-input', function()
