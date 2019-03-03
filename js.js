@@ -4,7 +4,11 @@ function RNG(seed) {
     this.a = 1103515245;
     this.c = 12345;
 
-    if(typeof seed === 'string')
+    if(!isNaN(seed) && typeof seed === 'string')
+    {
+        seed = Number(num);
+    }
+    else if(typeof seed === 'string')
     {
         var num = 0;
 
@@ -15,11 +19,6 @@ function RNG(seed) {
         }
 
         seed = num;
-    }
-
-    if(!isNaN(seed) && typeof seed === 'string')
-    {
-        seed = Number(num);
     }
 
     if(typeof seed === 'number' && seed < 1)
@@ -47,21 +46,21 @@ RNG.prototype.nextFloat = function() {
     return this.nextInt() / (this.m - 1);
 }
 
-var rng = null;
-function random(seed) {
-    // var x = Math.sin(seed) * 10000;
-    // return x - Math.floor(x);
-    if(seed !== undefined || rng === null)
-    {
-        if(seed === undefined)
-        {
-            seed = 0;
-        }
-
-        rng = new RNG(seed);
-    }
-    return rng.nextFloat();
-}
+// var rng = null;
+// function random(seed) {
+//     // var x = Math.sin(seed) * 10000;
+//     // return x - Math.floor(x);
+//     if(seed !== undefined || rng === null)
+//     {
+//         if(seed === undefined)
+//         {
+//             seed = 0;
+//         }
+//
+//         rng = new RNG(seed);
+//     }
+//     return rng.nextFloat();
+// }
 
 function loopInterval(callback, timeout, complete)
 {
@@ -297,8 +296,6 @@ function initApp(appId)
     selectors.canvas.width  = app.width;
     selectors.canvas.height = app.height;
     app.ctx                 = selectors.canvas.getContext('2d');
-
-    random(app.id);
 
     if(app.captureGif)
     {
