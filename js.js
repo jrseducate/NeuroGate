@@ -6,7 +6,7 @@ function RNG(seed) {
 
     if(!isNaN(seed) && typeof seed === 'string')
     {
-        seed = Number(num);
+        seed = Number(seed);
     }
     else if(typeof seed === 'string')
     {
