@@ -966,15 +966,18 @@ $(document).on('click', '[data-click="preventDefault"]', function(e)
 
 function handleResize()
 {
-    var parent = selectors.canvas.parentNode,
-        wOrH   = Math.min(window.innerHeight, parent.clientWidth);
-        size   = wOrH - (wOrH % 5);
+    if(!app.captureGif)
+    {
+        var parent = selectors.canvas.parentNode,
+            wOrH   = Math.min(window.innerHeight, parent.clientWidth);
+            size   = wOrH - (wOrH % 5);
 
-    selectors.canvas.width  = size;
-    selectors.canvas.height = size;
+        selectors.canvas.width  = size;
+        selectors.canvas.height = size;
 
-    config('width', size);
-    config('height', size);
+        config('width', size);
+        config('height', size);
+    }
 }
 
 var resizeTimeout = null;
