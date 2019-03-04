@@ -301,7 +301,7 @@ function initApp(appId)
     {
         app.encoder = new GIFEncoder();
         app.encoder.setRepeat(0);
-        app.encoder.setDelay(150);
+        app.encoder.setDelay(app.speed);
         app.encoder.start();
     }
 
