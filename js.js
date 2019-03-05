@@ -346,8 +346,8 @@ function init(appId)
                 data   : [],
             },
             grid       : {
-                cellsX : 20,
-                cellsY : 20,
+                cellsX : getVal(app, 'grid.cellsX', 20),
+                cellsY : getVal(app, 'grid.cellsY', 20),
             },
             gate       : {
                 width       : getVal(app, 'gate.width', 5),
@@ -851,6 +851,8 @@ function initOptions()
             'cell.borderWidth',
             'data.width',
             'data.colors',
+            'grid.cellsX',
+            'grid.cellsY',
             'gate.width',
             'gate.inColor',
             'gate.outColor',
