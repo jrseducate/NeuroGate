@@ -319,6 +319,7 @@ function init(appId)
         appState = {
             speed      : getVal(app, 'speed', 150),
             captureGif : getVal(app, 'captureGif', false),
+            maxTicks   : getVal(app, 'maxTicks', 0),
             width      : getVal(app, 'width', 810),
             height     : getVal(app, 'height', 810),
             render     : {
@@ -726,7 +727,7 @@ function update()
 
     each(app.data.data, function(data)
     {
-        if(inBounds(data.place))
+        if(inBounds(data.place) && (app.maxTicks === 0 || app.ticks < app.maxTicks))
         {
             switch(data.dir)
             {
@@ -831,6 +832,7 @@ function initOptions()
             },
             'speed',
             'captureGif',
+            'maxTicks',
             'generate.data.min',
             'generate.data.max',
             'generate.data.chanceToSpawn',
